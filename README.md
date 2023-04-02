@@ -8,3 +8,7 @@
 3. Get list of Popular movies/tvshows
 4. Get list of Top Rated movies/tvshows
 5. Individual movie/tvshow page showing more details, trailer, ratings, top casts, official videos, similar movies/tvshows, recommended movies/tvshows
+
+### Techstack
+1. React - hooks, contextAPI
+2. LazyLoading, InfiniteScrolling, Responsive
