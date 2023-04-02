@@ -1,6 +1,6 @@
 # Movie App 
 
-## Search any movie/tvshow and get recommendations for movies/tvshows. Hosted URL - https://imovies-react.netlify.app/movie/76600
+## Search any movie/tvshow and get recommendations for movies/tvshows. Hosted URL - https://imovies-react.netlify.app/
 
 ### Functionalities
 1. Search option for movie/tvshow
