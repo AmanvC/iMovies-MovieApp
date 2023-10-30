@@ -13,7 +13,9 @@
 1. React - hooks, contextAPI
 2. LazyLoading, InfiniteScrolling, Responsive
 
-
+### Before Starting the application
+1. Register on TMDB(The Movie Database) and get your tmdb token.
+2. Create a new .env file in root folder and add a key `REACT_APP_TMDB_TOKEN` and assign your tmdb token to this key.
 
 
 # Getting Started with Create React App
