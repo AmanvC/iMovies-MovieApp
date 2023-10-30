@@ -1,6 +1,6 @@
 import "./carousel.scss";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,

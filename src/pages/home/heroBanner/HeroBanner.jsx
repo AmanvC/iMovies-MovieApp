@@ -20,7 +20,7 @@ const HeroBanner = () => {
     const bg =
       url + data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
     setBackground(bg);
-  }, [data]);
+  }, [data, url]);
 
   const keyChange = (e) => {
     if (e.key === "Enter") {
