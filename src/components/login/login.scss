@@ -1,0 +1,63 @@
+@import "../../mixin.scss";
+
+.login-form-container{
+  height: calc(100vh - 300px);
+
+  .heading{
+    text-align: center;
+    color: #fff;
+    margin: 50px 0;
+    font-size: 2em;
+
+    @include sm{
+      font-size: 3em;
+    }
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin: auto;
+
+    @include sm{
+      width: 80%;
+    }
+
+    @include lg{
+      width: 50%;
+    }
+
+    .error-message-container{
+      margin: 20px 0 10px 0;
+
+      .error-message{
+        color: red;
+        font-size: 0.9em;
+        position: absolute;
+        // background-color: #fff;
+        // padding: 5px 10px;
+        // border-radius: 5px;
+      }
+    }
+  }
+
+  .action-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px auto 0;
+    gap: 10px;
+
+    @include sm{
+      width: 80%;
+      flex-direction: row;
+    }
+
+    @include lg{
+      width: 50%;
+    }
+  }
+}

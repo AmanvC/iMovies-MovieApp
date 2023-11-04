@@ -3,10 +3,11 @@ import "./header.scss";
 import { HiOutlineSearch } from "react-icons/hi";
 import { SlMenu } from "react-icons/sl";
 import { VscChromeClose } from "react-icons/vsc";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import ContentWrapper from "../contentWrapper/ContentWrapper";
+import { AuthContext } from "../../context/AuthContext";
 
 const Header = () => {
   const [show, setShow] = useState("transparent");
@@ -16,6 +17,7 @@ const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const {currentUser, logout} = useContext(AuthContext);
 
   //When we change the page, we are setting scroll to zero
   useEffect(() => {
@@ -43,8 +45,8 @@ const Header = () => {
     };
   }, [lastScrollY]);
 
-  const navigationHandler = (type) => {
-    navigate(`/explore/${type}`);
+  const navigationHandler = (category, type) => {
+    navigate(`/${category}/${type}`);
     setMobileView(false);
     setShowSearch(false);
   };
@@ -81,12 +83,26 @@ const Header = () => {
           <h2>iMovies</h2>
         </div>
         <ul className="menu-items">
-          <li className="menu-item" onClick={() => navigationHandler("movie")}>
+          <li className="menu-item" onClick={() => navigationHandler("explore", "movie")}>
             Movies
           </li>
-          <li className="menu-item" onClick={() => navigationHandler("tv")}>
+          <li className="menu-item" onClick={() => navigationHandler("explore", "tv")}>
             TV Shows
           </li>
+          {currentUser ? (
+            <li className="menu-item" onClick={() => logout()}>
+              Logout
+            </li>
+          ) : (
+            <>
+              <li className="menu-item" onClick={() => navigationHandler("user", "login")}>
+                Login
+              </li>
+              <li className="menu-item" onClick={() => navigationHandler("user", "register")}>
+                Register
+              </li>
+            </>
+          )}
           <li className="menu-item search-icon">
             <HiOutlineSearch onClick={toggleShowSearch} />
           </li>

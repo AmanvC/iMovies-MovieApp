@@ -1,0 +1,1 @@
+export const LOCALSTORAGE_TOKEN_KEY = "__iMovies_token__";
