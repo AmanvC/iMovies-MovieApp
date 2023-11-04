@@ -1,0 +1,66 @@
+@import '../../../mixin.scss';
+
+.movie_match_component{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #fff;
+  padding-bottom: 20px;
+
+  @include lg{
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  .action_card{
+    aspect-ratio: 1;
+    width: 100%;
+    // background-color: va);
+    border-radius: 20px;
+    box-shadow: -4px 3px 120px -2px rgba(0,0,0,1) inset;
+    border: 4px dashed #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: .25s linear 0s;
+    margin: auto;
+
+    @include sm{
+      width: 80%;
+    }
+
+    @include md{
+      width: 70%;
+    }
+
+    &:hover{
+      border: 4px dashed var(--orange);
+      background-color: var(--dark-light);
+      text-shadow: 7px 5px 5px rgba(0,0,0,0.6);
+    }
+
+    &:nth-child(2){
+      gap: 50px;
+    }
+
+    h1{
+      font-size: 3em;
+    }
+
+    .id_input{
+      width: 100%;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .error_message{
+        color: red;
+        margin-top: 5;
+      }
+    }
+  }
+}

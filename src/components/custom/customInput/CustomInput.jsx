@@ -1,7 +1,7 @@
 import React from 'react';
 import './customInput.scss';
 
-const CustomInput = ({label, inputType, placeholder, name, value, onChange, labelColor, errorMessage}) => {
+const CustomInput = ({label, inputType, placeholder, name, value, onChange, labelColor, errorMessage, width}) => {
   return (
     <div className='custom-input'>
       {label && (
@@ -16,6 +16,7 @@ const CustomInput = ({label, inputType, placeholder, name, value, onChange, labe
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        style={{width}}
       />
       <div className='custom-input-error-message-container'>
         {errorMessage && (

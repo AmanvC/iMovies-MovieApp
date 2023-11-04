@@ -30,6 +30,6 @@ export const postDataToBackendApi = async(url, params) => {
       });
       return res;
     }catch(err){
-      throw err.response.data.message;
+      throw err.response.data.message || 'Something went wrong!';
     }
 }

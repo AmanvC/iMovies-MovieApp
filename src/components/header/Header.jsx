@@ -90,9 +90,14 @@ const Header = () => {
             TV Shows
           </li>
           {currentUser ? (
-            <li className="menu-item" onClick={() => logout()}>
-              Logout
-            </li>
+            <>
+              <li className="menu-item" onClick={() => navigationHandler("user", "home")}>
+                Movie Match
+              </li>
+              <li className="menu-item" onClick={() => logout()}>
+                Logout
+              </li>
+            </>
           ) : (
             <>
               <li className="menu-item" onClick={() => navigationHandler("user", "login")}>

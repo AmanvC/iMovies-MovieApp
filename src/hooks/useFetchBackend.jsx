@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchDataFromBackendApi, postDataToBackendApi } from "../utils/backend-api";
 
-const useFetchBackend = (url, type) => { //type = GET, POST
+const useFetchBackend = (url, payload, type) => { //type = GET, POST
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(null);
   const [error, setError] = useState(null);
@@ -12,7 +12,7 @@ const useFetchBackend = (url, type) => { //type = GET, POST
     setError(null);
 
     if(type === 'GET'){
-			fetchDataFromBackendApi(url)
+			fetchDataFromBackendApi(url, payload)
 				.then((res) => {
 					setLoading(false);
 					setData(res);
@@ -22,7 +22,7 @@ const useFetchBackend = (url, type) => { //type = GET, POST
 					setError("Something went wrong!");
 				});
     }else if(type === 'POST'){
-			postDataToBackendApi(url)
+			postDataToBackendApi(url, payload)
 				.then((res) => {
 					setLoading(false);
 					setData(res);

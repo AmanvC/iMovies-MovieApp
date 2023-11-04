@@ -1,8 +1,15 @@
+import "./userHome.scss";
 import React from 'react';
+import UserDetails from "./userDetails/UserDetails";
+import MovieMatchComponent from "./movieMatchComponent/MovieMatchComponent";
 
 const UserHome = () => {
+
   return (
-    <div>UserHome</div>
+    <div className="user-home-container">
+      <UserDetails />
+      <MovieMatchComponent />
+    </div>
   )
 }
 
