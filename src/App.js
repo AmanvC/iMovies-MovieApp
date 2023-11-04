@@ -7,15 +7,23 @@ import Details from "./pages/details/Details";
 import SearchResult from "./pages/searchResult/SearchResult";
 import Explore from "./pages/explore/Explore";
 import PageNotFound from "./pages/404/PageNotFound";
+import Login from "./components/login/Login";
 
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import useFetch from "./hooks/useFetch";
 import Loader from "./components/loader/Loader";
+import User from "./pages/user/User";
+import Register from "./components/register/Register";
+import UserHome from "./components/userHome/UserHome";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const {currentUser} = useContext(AuthContext);
 
   useEffect(() => {
     fetchApiConfig();
@@ -39,7 +47,7 @@ function App() {
 
     const data = await Promise.all(promises);
     data.map(({ genres }) => {
-      return genres.map((item) => {
+      return genres.forEach((item) => {
         allGenres[item.id] = item.name;
       });
     });
@@ -56,19 +64,52 @@ function App() {
     return <Loader />;
   }
 
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to="/user/login" />;
+    }
+    return children;
+  };
+
   return (
     <div>
-      <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/:mediaType/:id" element={<Details />} />
-          <Route path="/search/:query" element={<SearchResult />} />
-          <Route path="/explore/:mediaType" element={<Explore />} />
+          <Route path=":mediaType/:id" element={<Details />} />
+          <Route path="search/:query" element={<SearchResult />} />
+          <Route path="explore/:mediaType" element={<Explore />} />
+          <Route path="user" element={<User />}>
+            <Route path="login" 
+              element={
+                currentUser ? (
+                  <Navigate to="/user/home" />
+                ) : (
+                  <Login />
+                )
+              }
+            />
+            <Route path="register" 
+              element={
+                currentUser ? (
+                  <Navigate to="/user/home" />
+                ) : (
+                  <Register />
+                )
+              }
+            />
+            <Route path="home" 
+              element={
+                <ProtectedRoute>
+                  <UserHome />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="*" element={<PageNotFound />} />
+          </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-        <Footer />
-      </BrowserRouter>
+        {/* <Footer /> */}
     </div>
   );
 }
