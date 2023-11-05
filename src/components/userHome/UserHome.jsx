@@ -1,8 +1,11 @@
 import React from 'react';
+import useSocketSetup from '../../hooks/useSocketSetup';
 
 const UserHome = () => {
+  useSocketSetup();
+
   return (
-    <div>UserHome</div>
+    <div>User Home Component</div>
   )
 }
 
