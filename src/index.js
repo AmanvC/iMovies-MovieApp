@@ -6,6 +6,7 @@ import store from "./redux/store";
 import { Provider } from "react-redux";
 import AuthContextProvider from "./context/AuthContext";
 import { BrowserRouter } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,6 +15,7 @@ root.render(
     <Provider store={store}>
       <AuthContextProvider>
         <App />
+        <Toaster />
       </AuthContextProvider>
     </Provider>
   </BrowserRouter>

@@ -8,7 +8,7 @@ const RoomComponent = ({closeSession}) => {
   }
 
   return (
-    <button>Close</button>
+    <button onClick={handleLeaveRoom}>Close</button>
   )
 }
 
